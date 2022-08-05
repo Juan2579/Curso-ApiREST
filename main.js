@@ -21,18 +21,42 @@ async function loadRandomMichis(){
 }
 catButton.addEventListener("click", loadRandomMichis);
 
-async function loadFavoriteMichis(){
+async function loadFavouriteMichis(){
     const response = await fetch(`${API}/favourites?api_key=${API_KEY}`)
     const data = await response.json()
 
     if(response.status != 200){
         spanError.innerHTML = "Hubo un error: " + response.status + data.message
     }else{
-        console.log(data)
+        data.forEach(michi => {
+            const section = document.getElementById("favouritesMichis")
+            const article = document.createElement("article")
+            const img = document.createElement("img")
+            const btn = document.createElement("button")
+            const btnText = document.createTextNode("Sacar al michi de favoritos")
+            // michi.image.url
+        })
         
     }
 }
 
+async function saveFavouriteMichis(){
+    const response = await fetch(`${API}/favourites?api_key=${API_KEY}`, {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            image_id: "djn"
+        })
+    })
+    const data = await response.json();
+    console.log(response)
+    if(response.status != 200){
+        spanError.innerHTML = "Hubo un error: " + response.status + data.message
+    }
+}
+
 loadRandomMichis();
-loadFavoriteMichis();
+loadFavouriteMichis();
 
