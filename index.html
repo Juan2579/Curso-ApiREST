@@ -28,6 +28,15 @@
         <button class="cat_button">Gatito Random</button>
     </section>
 
+    <section id="uploadingMichi">
+        <h2>Sube la foto de tu michi</h2>
+
+        <form id="uploadingForm">
+            <input id="file" type="file" name="file">
+            <button onclick="uploadMichiPhoto()" type="button">Subir foto de michi</button>
+        </form>
+    </section>
+
     <section id="favouriteMichis">
         <h2>Michis favoritos</h2>
 
@@ -38,7 +47,7 @@
 
     </section>
 
-   
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="./main.js"></script>
 </body>
 </html>
